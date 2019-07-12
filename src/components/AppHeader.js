@@ -55,10 +55,12 @@ class AppHeader extends React.Component{
    }
    render(){
        return (
-          <div className="row header-container">
+          <div className="row header-container clearfix">
              <div className="app-name pull-left">Fitness App</div>
-             <div className="home pull-left">Home</div>
-             <div className="bmi-calc pull-left">BMI Calc</div>
+             <div className="home pull-left">HOME</div>
+             <div className="bmi-calc pull-left">BMI CALCULATOR</div>
+             <div className="training pull-left">TRAINING</div>
+             <div className="events pull-left">EVENTS</div>
             {this.renderAuthButton()}
           </div>
        )

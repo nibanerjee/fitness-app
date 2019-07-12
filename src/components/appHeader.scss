@@ -2,9 +2,12 @@
     padding : 30px 0;
     color: #fff;
     border-bottom:1px solid #fff;
-    .app-name,.home,.bmi-calc{
+    .app-name,.home,.bmi-calc,.training,.events{
         margin-right:80px;
         line-height :40px;
+    }
+    .events{
+        margin-right : 0;
     }
     .app-name{
         font-size:24px;
