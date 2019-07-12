@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { signIn,signOut } from '../actions';
+import './appHeader.scss';
 
-class GoogleAuth extends React.Component{
+class AppHeader extends React.Component{
    componentDidMount(){
        window.gapi.load('client:auth2',() => {
            window.gapi.client.init({
@@ -38,22 +39,29 @@ class GoogleAuth extends React.Component{
            return null;
        } else if(this.props.isSignedIn) {
            return (
-               <button className="ui red google button" onClick={this.onSignOutClick}>
+               <button className="logout-btn pull-right" onClick={this.onSignOutClick}>
                    <i className="icon google"></i>
                    Sign Out
                 </button>
            )
        } else {
            return (
-            <button className="ui red google button" onClick={this.onSignInClick}>
-                <i className="icon google"></i>
-                Sign In With Google
-            </button>
+                <button className="login-btn pull-right" onClick={this.onSignInClick}>
+                    <i className="icon google"></i>
+                    Sign In With Google
+                </button>
            )
        }
    }
    render(){
-       return <div>{this.renderAuthButton()}</div>
+       return (
+          <div className="row header-container">
+             <div className="app-name pull-left">Fitness App</div>
+             <div className="home pull-left">Home</div>
+             <div className="bmi-calc pull-left">BMI Calc</div>
+            {this.renderAuthButton()}
+          </div>
+       )
    } 
 }
 
@@ -63,4 +71,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect (mapStateToProps,{signIn,signOut})(GoogleAuth);
+export default connect (mapStateToProps,{signIn,signOut})(AppHeader);

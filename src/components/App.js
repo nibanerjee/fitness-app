@@ -1,10 +1,11 @@
 import React from 'react';
-import GoogleAuth from './GoogleAuth';
+import AppHeader from './AppHeader';
+import './App.scss';
 
 const App = () => {
     return (
-        <div>
-            <GoogleAuth/>
+        <div className="fitness-app container-fluid">
+            <AppHeader/>
         </div>
     );
 }
