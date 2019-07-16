@@ -39,6 +39,7 @@ class BMICalculator extends React.Component{
         this.setState({age : ''});
         this.setState({weight :''});
         this.setState({height : ''});
+        this.setState({bmi : null});
         document.querySelectorAll('input[type="radio"]:checked').forEach((item) => {
             item.checked = false;
         });
