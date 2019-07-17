@@ -1,0 +1,37 @@
+$orange: #F57D3F;
+.home-card-wrapper {
+	margin: 25px 0;
+	.home-option {
+		.option-card {
+			width: 350px;
+	    margin: 20px auto;
+	    height: 200px;
+	    background: #000;
+	    border-top: 3px solid $orange;
+	    box-shadow: 2px 2px 20px 2px #222;
+	    padding: 10px 15px;
+	    .card-title {
+	    	font-size: 16px;
+	    	text-align: center;
+	    }
+	    .card-description {
+	    	font-size: 15px;
+	    	padding: 20px 0;
+	    }
+	    .card-cta {
+	    	width: 80px;
+	    	margin: 0 auto;
+	    	a {
+	    		width: 100%;
+	    		background-color: $orange;
+			    border-radius: 30px;
+			    padding: 10px 0;
+			    border: 0;
+			    outline:0;
+			    color : #FFF;
+			    margin-bottom: 10px;
+	    	}
+	    }
+		}
+	}
+}

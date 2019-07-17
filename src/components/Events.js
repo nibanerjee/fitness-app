@@ -2,7 +2,7 @@ import React from 'react';
 
 const Events = () => {
     return (
-        <div class="row">Events Page</div>
+        <div className="row">Events Page</div>
     );
 }
 
