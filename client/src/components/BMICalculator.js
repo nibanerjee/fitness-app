@@ -12,10 +12,6 @@ class BMICalculator extends React.Component{
         goal : '',
     }
 
-    componentDidMount(){
-        this.props.FetchBMIData();
-    }
-
     componentDidUpdate(prevProps){
         if((this.props.loggedInUserId != prevProps.loggedInUserId) 
         || (this.props.existingUserId == this.props.loggedInUserId)){
@@ -57,7 +53,7 @@ class BMICalculator extends React.Component{
         });
     }
     calculateBMI = () => {
-        if(this.state.age != '' && this.state.weight != '' && this.state.height != ''){
+        if(this.state.age != '' && this.state.weight != '' && this.state.height != '' && this.props.existingUserBMI == null){
             const weight = this.state.weight;
             const heightInMetres = this.state.height / 100;
             const bmi = weight / (heightInMetres * heightInMetres);
@@ -65,12 +61,10 @@ class BMICalculator extends React.Component{
         }
     }
     render(){
-        const userDataPresent = (this.props.existingUserId != this.props.loggedInUserId) ? true : false;
         return (
             <div className="row bmi-calc-page">
                 <div className="col-md-5 calculator">
-                    {(userDataPresent || this.props.loggedInUserId == null) ? ( 
-                        <div className="col-md-12 no-padding">
+                    <div className="col-md-12 no-padding">
                             <span className="col-md-12 no-padding">BODY PARAMETERS</span>
                             <div className="col-md-12 no-padding clearfix gender-container">
                                 <label className="pull-left" onClick={(e) => this.onGenderChange(e,'MALE')}>
@@ -108,15 +102,15 @@ class BMICalculator extends React.Component{
                                 <button className="clear pull-left" onClick={this.clearFields}>CLEAR</button>
                                 <button className="calc pull-right" onClick={this.calculateBMI}>CALCULATE</button>
                             </div>
-                        </div>
-                    ) : (
-                        <div className="col-md-12 no-padding">
-                            your bmi is {this.props.existingUserBMI}
-                        </div>
-                    )}
+                            <div class="arrow-right"></div>
+                    </div>
                 </div>
-                <div className="col-md-7 training-module">
-                    
+                <div className="col-md-7 training-module-wrapper">
+                    <div className="training-module">
+                        {this.props.existingUserBMI != null && this.props.loggedInUserId != null &&
+                            <div>Your BMI is {this.props.existingUserBMI}</div>
+                        }
+                    </div>
                 </div>
             </div>
         );
