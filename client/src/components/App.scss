@@ -1,10 +1,20 @@
-.fitness-app{
-    background-color : #000;
-    max-width:1180px;
-    height:100vh;
-    margin:0 auto;
-    padding : 0 50px;
-    color: #CCC;
+body {
+  background-color: #000;
+	.row {
+		margin: 0;
+	}
+	.fitness-app{
+	  max-width: 1180px;
+	  height: 100vh;
+	  margin: 0 auto;
+	  color: #CCC;
+	  background-image: url(../assets/home-bg.jpg);
+	  padding: 0;
+	  .inner-wrapper {
+	  	background-color: rgba(0, 0, 0, 0.7);
+	  	height: 100vh;
+	  }
+	}
 }
 
 .no-padding{

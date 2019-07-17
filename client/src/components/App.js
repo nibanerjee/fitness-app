@@ -10,17 +10,19 @@ import './App.scss';
 
 const App = () => {
     return (
-        <div className="fitness-app container-fluid">
-            <Router history={history}>
-                <AppHeader/>
-                <Switch>
-                    <Route path="/" exact component={Home}/>
-                    <Route path="/bmicalc" component={BMICalculator}/>
-                    <Route path="/training" component={Training}/>
-                    <Route path="/events" component={Events}/>
-                </Switch>
-            </Router>
+      <div className="fitness-app container-fluid">
+        <div className="inner-wrapper">
+          <Router history={history}>
+            <AppHeader/>
+            <Switch>
+              <Route path="/" exact component={Home}/>
+              <Route path="/bmicalc" component={BMICalculator}/>
+              <Route path="/training" component={Training}/>
+              <Route path="/events" component={Events}/>
+            </Switch>
+          </Router>
         </div>
+      </div>
     );
 }
 

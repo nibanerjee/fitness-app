@@ -1,26 +1,32 @@
+$orange: #F57D3F;
 .header-container{
-    padding : 30px 0;
-    border-bottom:1px solid #CCC;
-    .app-name,.home,.bmi-calc,.training,.events{
-        margin-right:80px;
-        line-height :40px;
+  padding: 0 20px;
+  border-bottom: 3px solid #CCC;
+  .app-name,.home,.bmi-calc,.training,.events{
+    line-height: 40px;
+    padding: 15px 40px;
+    text-transform: uppercase;
+    margin-bottom: -3px;
+    border-bottom: 3px solid transparent;
+    text-align: center;
+    &.active {
+      border-bottom: 3px solid $orange;
     }
-    .events{
-        margin-right : 0;
-    }
-    .app-name{
-        font-size:24px;
-    }
-    a{
-        color: #CCC;
-        text-decoration: none;
-    }
-    button{
-        background-color: #F57D3F;
-        border-radius: 30px;
-        padding: 10px 20px;
-        border: 0;
-        outline:0;
-        color : #FFF;
-    }
+  }
+  .app-name{
+    font-size:24px;
+  }
+  a{
+    color: #CCC;
+    text-decoration: none;
+  }
+  button{
+    background-color: $orange;
+    border-radius: 30px;
+    padding: 10px 20px;
+    border: 0;
+    outline:0;
+    color : #FFF;
+    margin: 15px 0;
+  }
 }

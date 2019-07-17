@@ -1,9 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { signIn,signOut } from '../actions';
-import './AppHeader.scss';
-
+import './appHeader.scss';
+const headerItems = [
+    {
+      'title': 'home',
+      'class': 'home',
+      'link': '/',
+      'active': true
+    }, {
+      'title': 'bmi calculator',
+      'class': 'bmi-calc',
+      'link': '/bmicalc',
+      'active': false
+    }, {
+      'title': 'training',
+      'class': 'training',
+      'link': '/training',
+      'active': false
+    }, {
+      'title': 'events',
+      'class': 'events',
+      'link': '/events',
+      'active': false
+    }
+  ];
 class AppHeader extends React.Component{
    componentDidMount(){
        window.gapi.load('client:auth2',() => {
@@ -17,7 +39,6 @@ class AppHeader extends React.Component{
            });
        });
    }
-
 
    onAuthChange = (isSignedIn) =>{
        if(isSignedIn){
@@ -54,18 +75,35 @@ class AppHeader extends React.Component{
            )
        }
    }
-   render(){
-       return (
-          <div className="row header-container clearfix">
-             <div className="app-name pull-left">Fitness App</div>
-             <div className="home pull-left"><Link to="/">HOME</Link></div>
-             <div className="bmi-calc pull-left"><Link to="/bmicalc">BMI CALCULATOR</Link></div>
-             <div className="training pull-left"><Link to="/training">TRAINING</Link></div>
-             <div className="events pull-left"><Link to="/events">EVENTS</Link></div>
-             {this.renderAuthButton()}
-          </div>
-        )
-    } 
+
+  setActiveItem = () => {
+    var path = this.props.history.location.pathname;
+    headerItems.map(function(val,ind) {
+      val.active = false;
+      if(val.link === path) {
+        val.active = true;
+      }
+    })
+  }
+
+  render(){
+    return (
+      <div className="row header-container clearfix">
+        <div className="app-name pull-left">Fitness App</div>
+        {
+          headerItems.map((h,i) => {
+            return (
+              <div onClick={this.setActiveItem} key={i} className={'pull-left ' + h.class + (h.active ? ' active' : '')}>
+                <Link to={h.link}>{h.title}</Link>
+              </div>
+            );
+          })
+        }
+        {this.renderAuthButton()}
+      </div>
+    )
+  } 
+
 }
 
 const mapStateToProps = (state) => {
@@ -74,4 +112,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect (mapStateToProps,{signIn,signOut})(AppHeader);
+export default connect (mapStateToProps,{signIn,signOut})(withRouter(AppHeader));
