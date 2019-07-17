@@ -13,10 +13,6 @@ class BMICalculator extends React.Component{
         bmi : null
     }
 
-    componentDidMount(prevProps){
-        this.props.FetchBMIData();
-    }
-
     componentDidUpdate(prevProps){
         if(this.props.loggedInUserId != prevProps.loggedInUserId){
             this.props.FetchBMIData();

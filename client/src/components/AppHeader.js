@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { signIn,signOut } from '../actions';
-import './appHeader.scss';
+import './AppHeader.scss';
 const headerItems = [
     {
       'title': 'home',
