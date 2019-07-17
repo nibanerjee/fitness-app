@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { PersistBMIData,FetchBMIData, } from '../actions';
+import { PersistBMIData,FetchBMIData } from '../actions';
 import './BMICalculator.scss';
 
 class BMICalculator extends React.Component{
@@ -10,11 +10,15 @@ class BMICalculator extends React.Component{
         weight : '',
         height : '',
         goal : '',
-        bmi : null
+    }
+
+    componentDidMount(){
+        this.props.FetchBMIData();
     }
 
     componentDidUpdate(prevProps){
-        if(this.props.loggedInUserId != prevProps.loggedInUserId){
+        if((this.props.loggedInUserId != prevProps.loggedInUserId) 
+        || (this.props.existingUserId == this.props.loggedInUserId)){
             this.props.FetchBMIData();
         }
     }
@@ -48,7 +52,6 @@ class BMICalculator extends React.Component{
         this.setState({age : ''});
         this.setState({weight :''});
         this.setState({height : ''});
-        this.setState({bmi : null});
         document.querySelectorAll('input[type="radio"]:checked').forEach((item) => {
             item.checked = false;
         });
@@ -66,7 +69,7 @@ class BMICalculator extends React.Component{
         return (
             <div className="row bmi-calc-page">
                 <div className="col-md-5 calculator">
-                    {(userDataPresent || this.props.loggedInUserId == null) &&  
+                    {(userDataPresent || this.props.loggedInUserId == null) ? ( 
                         <div className="col-md-12 no-padding">
                             <span className="col-md-12 no-padding">BODY PARAMETERS</span>
                             <div className="col-md-12 no-padding clearfix gender-container">
@@ -106,7 +109,11 @@ class BMICalculator extends React.Component{
                                 <button className="calc pull-right" onClick={this.calculateBMI}>CALCULATE</button>
                             </div>
                         </div>
-                    }
+                    ) : (
+                        <div className="col-md-12 no-padding">
+                            your bmi is {this.props.existingUserBMI}
+                        </div>
+                    )}
                 </div>
                 <div className="col-md-7 training-module">
                     

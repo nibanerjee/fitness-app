@@ -4,16 +4,16 @@ const INITIAL_STATE = {
     isSignedIn : null,
     userId : null,
 }
-const USER = {
-    bmi : null,
-    userId : null,
-}
 
+const USER = {
+    userId : null,
+    bmi : null
+}
 
 const UserReducer = (state = USER,action) => {
     switch(action.type){
         case 'PERSIST_BMI' :
-        return {...state,[action.payload.id] : action.payload};
+        return {...state,bmi : action.payload.bmi,userId : action.payload.userId};
         case 'FETCH_BMI' :
         return {...state,bmi : action.payload[0].bmi,userId : action.payload[0].userId};
         default:
