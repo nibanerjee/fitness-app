@@ -1,4 +1,231 @@
 {
-  "users": [],
-  "workouts" : []
+  "users": [
+    {
+      "bmi": 24.691358024691358,
+      "userId": "102605792633118497929",
+      "gender": "male",
+      "goal": "maintain",
+      "id": 1
+    }
+  ],
+  "workouts": {
+    "male": {
+      "underweight": {
+        "loss": [
+          {
+            "suggestion": "No exercise required. Please consult the doctor and have a healthy diet."
+          }
+        ],
+        "gain": [
+          {
+            "suggestion": "Free Weights. More effective than machines because you must balance the weight yourself. Safer because you control how the bar moves. More effective than dumbbells because the weight is heavier, and you can add as little as 0.5kg/1lb per workout."
+          },
+          {
+            "suggestion": "Compound Exercises. Squats, Deadlifts, Bench, Press, Rows. These exercises work several muscles at the same time, with the heaviest weights. They trigger maximum strength and muscle growth in your entire body. The big fives must be the bulk of your routine."
+          },
+          {
+            "suggestion": "Progressive overload i.e. gain in strength and muscle mass to lift the heavier weights you’re exposing it to. You can’t build muscle if you lift the same weight all the time. You must add weight."
+          }
+        ],
+        "maintain": [
+          {
+            "suggestion": "No exercise required. Please consult the doctor and have a healthy diet."
+          }
+        ]
+      },
+      "healthyweight": {
+        "loss": [
+          {
+            "suggestion": "No workout is required."
+          }
+        ],
+        "gain": [
+          {
+            "suggestion": "Bench Press 3 sets of 6-8 reps.Take 2-3 mins rest between sets."
+          },
+          {
+            "suggestion": "Rows 3 sets of 6-8 reps.Take 2-3 minutes rest between sets."
+          },
+          {
+            "suggestion": "Incline Dumbbell Press 3 sets of 8-10 reps.Take 1-2 minutes rest between sets."
+          },
+          {
+            "suggestion": "Talk to a doctor, nutritionist, or personal trainer about achieving a healthy weight gain."
+          }
+        ],
+        "maintain": [
+          {
+            "suggestion": "Push Ups,Pull Ups,Squats,Lunges and all the body weight exrcises."
+          },
+          {
+            "suggestion": "Lifestyle changes which involvs good sleep,reduced stress levels."
+          },
+          {
+            "suggestion": "Do cardio exercises like walking,running,swimming,cycling etc."
+          }
+        ]
+      },
+      "overweight": {
+        "loss": [
+          {
+            "suggestion": "Skip the elevator and take the stairs."
+          },
+          {
+            "suggestion": "Sit on an exercise ball at work to strengthen your core and back muscles."
+          },
+          {
+            "suggestion": "Go for a walk at lunch or after work."
+          }
+        ],
+        "gain": [
+          {
+            "suggestion": "You are already overweight try to burn a few calories"
+          }
+        ],
+        "maintain": [
+          {
+            "suggestion": "You are already overweight try to burn a few calories"
+          }
+        ]
+      },
+      "obese": {
+        "loss": [
+          {
+            "suggestion": "Bend and Lift Progression exercises like hip-bridge,trx squat,body weight squat and medicinal ball squat."
+          },
+          {
+            "suggestion": "Single leg movement patterns like static lunge,forward & backward walking,suitcase carries,and body weight step ups."
+          },
+          {
+            "suggestion": "push progression exercises like smith machine pushup, trx chest press,push up with legs on stability ball"
+          },
+          {
+            "suggestion": "pull progression exercises like smith machine rows,trx rows,unilateral and bilateral rows"
+          },
+          {
+            "suggestion": "rotational movement exercises like standing cable machine rotation,side lunge with torso rotation,side lunge with torso rotation"
+          }
+        ],
+        "gain": [
+          {
+            "suggestion": "You are already overweight try to burn a few calories"
+          }
+        ],
+        "maintain": [
+          {
+            "suggestion": "You are already overweight try to burn a few calories"
+          }
+        ]
+      }
+    },
+    "female": {
+      "underweight": {
+        "loss": [
+          {
+            "suggestion": "No exercise required. Please consult the doctor and have a healthy diet."
+          }
+        ],
+        "gain": [
+          {
+            "suggestion": "Free Weights. More effective than machines because you must balance the weight yourself. Safer because you control how the bar moves. More effective than dumbbells because the weight is heavier, and you can add as little as 0.5kg/1lb per workout."
+          },
+          {
+            "suggestion": "Compound Exercises. Squats, Deadlifts, Bench, Press, Rows. These exercises work several muscles at the same time, with the heaviest weights. They trigger maximum strength and muscle growth in your entire body. The big fives must be the bulk of your routine."
+          },
+          {
+            "suggestion": "Progressive overload i.e. gain in strength and muscle mass to lift the heavier weights you’re exposing it to. You can’t build muscle if you lift the same weight all the time. You must add weight."
+          }
+        ],
+        "maintain": [
+          {
+            "suggestion": "No exercise required. Please consult the doctor and have a healthy diet."
+          }
+        ]
+      },
+      "healthyweight": {
+        "loss": [
+          {
+            "suggestion": "Weight loss is not required."
+          }
+        ],
+        "gain": [
+          {
+            "suggestion": "Bench Press 3 sets of 6-8 reps.Take 2-3 mins rest between sets."
+          },
+          {
+            "suggestion": "Rows 3 sets of 6-8 reps.Take 2-3 minutes rest between sets."
+          },
+          {
+            "suggestion": "Incline Dumbbell Press 3 sets of 8-10 reps.Take 1-2 minutes rest between sets."
+          },
+          {
+            "suggestion": "Talk to a doctor, nutritionist, or personal trainer about achieving a healthy weight gain."
+          }
+        ],
+        "maintain": [
+          {
+            "suggestion": "Push Ups,Pull Ups,Squats,Lunges and all the body weight exrcises."
+          },
+          {
+            "suggestion": "Lifestyle changes which involvs good sleep,reduced stress levels."
+          },
+          {
+            "suggestion": "Do cardio exercises like walking,running,swimming,cycling etc."
+          }
+        ]
+      },
+      "overweight": {
+        "loss": [
+          {
+            "suggestion": "Skip the elevator and take the stairs."
+          },
+          {
+            "suggestion": "Sit on an exercise ball at work to strengthen your core and back muscles."
+          },
+          {
+            "suggestion": "Go for a walk at lunch or after work."
+          }
+        ],
+        "gain": [
+          {
+            "suggestion": "You are already overweight try to burn a few calories"
+          }
+        ],
+        "maintain": [
+          {
+            "suggestion": "You are already overweight try to burn a few calories"
+          }
+        ]
+      },
+      "obese": {
+        "loss": [
+          {
+            "suggestion": "Bend and Lift Progression exercises like hip-bridge,trx squat,body weight squat and medicinal ball squat."
+          },
+          {
+            "suggestion": "Single leg movement patterns like static lunge,forward & backward walking,suitcase carries,and body weight step ups."
+          },
+          {
+            "suggestion": "push progression exercises like smith machine pushup, trx chest press,push up with legs on stability ball"
+          },
+          {
+            "suggestion": "pull progression exercises like smith machine rows,trx rows,unilateral and bilateral rows"
+          },
+          {
+            "suggestion": "rotational movement exercises like standing cable machine rotation,side lunge with torso rotation,side lunge with torso rotation"
+          }
+        ],
+        "gain": [
+          {
+            "suggestion": "You are already overweight try to burn a few calories"
+          }
+        ],
+        "maintain": [
+          {
+            "suggestion": "You are already overweight try to burn a few calories"
+          }
+        ]
+      }
+    }
+  }
 }

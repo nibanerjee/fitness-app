@@ -13,10 +13,10 @@ export const signOut = () => {
     } 
 }
 
-export const PersistBMIData = (bmi) => {
+export const PersistBMIData = (bmi,gender,goal) => {
    return async (dispatch,getState) => {
         const {userId} = getState().auth;
-        const response = await fitnessService.post('/users',{bmi,userId});
+        const response = await fitnessService.post('/users',{bmi,userId,gender,goal});
         dispatch({
             type : 'PERSIST_BMI',
             payload : response.data
@@ -34,5 +34,28 @@ export const FetchBMIData = () => {
                 payload : response.data
             });
         }
+    }
+}
+
+const calculateObesity = (bmi) => {
+    if(bmi < 18.5){
+        return 'underweight';
+    } else if (bmi >= 18.5 && bmi <= 24.9) {
+        return 'healthyweight';
+    } else if(bmi >= 25 && bmi <= 29.9) {
+        return 'overweight';
+    } else if (bmi >= 30) {
+        return 'obese';
+    }
+}
+export const FetchWorkoutData = () => {
+    return async (dispatch,getState) => {
+        const {bmi,gender,goal} = getState().user;
+        const response = await fitnessService.get('/workouts');
+        const obesity = calculateObesity(bmi);
+        dispatch({
+            type : 'FETCH_WORKOUTS',
+            payload : response.data[gender][obesity][goal]
+        });
     }
 }

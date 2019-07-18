@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { PersistBMIData,FetchBMIData } from '../actions';
+import { PersistBMIData,FetchBMIData,FetchWorkoutData } from '../actions';
 import './BMICalculator.scss';
 
 class BMICalculator extends React.Component{
@@ -13,8 +13,10 @@ class BMICalculator extends React.Component{
     }
 
     componentDidUpdate(prevProps){
-        if((this.props.loggedInUserId != prevProps.loggedInUserId) 
-        || (this.props.existingUserId == this.props.loggedInUserId)){
+        if(this.props.existingUserBMI !== prevProps.existingUserBMI){
+            this.props.FetchWorkoutData(this.state.gender,this.state.goal);
+        } else if((this.props.loggedInUserId !== prevProps.loggedInUserId) 
+        || (this.props.existingUserId === this.props.loggedInUserId)){
             this.props.FetchBMIData();
         }
     }
@@ -53,11 +55,12 @@ class BMICalculator extends React.Component{
         });
     }
     calculateBMI = () => {
-        if(this.state.age != '' && this.state.weight != '' && this.state.height != '' && this.props.existingUserBMI == null){
+        if(this.state.age !== '' && this.state.weight !== '' && this.state.height !== '' && 
+        this.state.gender !== '' && this.state.goal !== '' && this.props.existingUserBMI === null){
             const weight = this.state.weight;
             const heightInMetres = this.state.height / 100;
             const bmi = weight / (heightInMetres * heightInMetres);
-            this.props.PersistBMIData(bmi);
+            this.props.PersistBMIData(bmi,this.state.gender,this.state.goal);
         }
     }
     render(){
@@ -67,11 +70,11 @@ class BMICalculator extends React.Component{
                     <div className="col-md-12 no-padding">
                             <span className="col-md-12 no-padding">BODY PARAMETERS</span>
                             <div className="col-md-12 no-padding clearfix gender-container">
-                                <label className="pull-left" onClick={(e) => this.onGenderChange(e,'MALE')}>
+                                <label className="pull-left" onClick={(e) => this.onGenderChange(e,'male')}>
                                     <input type="radio" name="gender"/>
                                     <span className="male">MALE</span>
                                 </label>
-                                <label className="pull-right" onClick={(e) => this.onGenderChange(e,'FEMALE')}>
+                                <label className="pull-right" onClick={(e) => this.onGenderChange(e,'female')}>
                                     <input type="radio" name="gender"/>
                                     <span className="female">FEMALE</span>
                                 </label>
@@ -84,15 +87,15 @@ class BMICalculator extends React.Component{
                             <div className="col-md-12 no-padding divider"><hr/></div>
                             <span className="col-md-12 no-padding">TRAINING GOAL</span>
                             <div className="col-md-12 no-padding goal-container">
-                                <label className="goal-col" onClick={(e) => this.onGoalChange(e,'LOSS')}>
+                                <label className="goal-col" onClick={(e) => this.onGoalChange(e,'loss')}>
                                     <input type="radio" name="goal"/>
                                     <span className="loss">LOSS</span>
                                 </label>
-                                <label className="goal-col" onClick={(e) => this.onGoalChange(e,'GAIN')}>
+                                <label className="goal-col" onClick={(e) => this.onGoalChange(e,'gain')}>
                                     <input type="radio" name="goal"/>
                                     <span className="gain">GAIN</span>
                                 </label>
-                                <label className="goal-col" onClick={(e) => this.onGoalChange(e,'MAINTAIN')}>
+                                <label className="goal-col" onClick={(e) => this.onGoalChange(e,'maintain')}>
                                     <input type="radio" name="goal"/>
                                     <span className="maintain">MAINTAIN</span>
                                 </label>
@@ -102,13 +105,28 @@ class BMICalculator extends React.Component{
                                 <button className="clear pull-left" onClick={this.clearFields}>CLEAR</button>
                                 <button className="calc pull-right" onClick={this.calculateBMI}>CALCULATE</button>
                             </div>
-                            <div class="arrow-right"></div>
+                            <div className="arrow-right"></div>
                     </div>
                 </div>
                 <div className="col-md-7 training-module-wrapper">
                     <div className="training-module">
-                        {this.props.existingUserBMI != null && this.props.loggedInUserId != null &&
-                            <div>Your BMI is {this.props.existingUserBMI}</div>
+                        {this.props.existingUserBMI != null && this.props.loggedInUserId != null && this.props.userWorkout != null &&
+                            <div>
+                                <div className="clearfix">
+                                    <div className="pull-left">
+                                        BMI : <span className="bmi-val">{this.props.existingUserBMI}</span>
+                                    </div>
+                                    <div className="pull-right">
+                                        GOAL : <span className="bmi-val">{this.props.existingUserGoal}</span>
+                                    </div>
+                                </div>
+                                <div className="workout-icon"></div>
+                                <ul className="workout-list">
+                                    {this.props.userWorkout.map((workout,index) => {
+                                        return <li className="workout-item clearfix" key={index}><span className="pull-left workout-badge"></span><span className="pull-left">{workout.suggestion}</span></li>
+                                    })}
+                                </ul>
+                            </div>
                         }
                     </div>
                 </div>
@@ -118,10 +136,12 @@ class BMICalculator extends React.Component{
 }
 const mapStateToProps = (state) => {
     return {
+        existingUserGoal : state.user.goal,
         existingUserBMI : state.user.bmi,
         existingUserId : state.user.userId,
-        loggedInUserId : state.auth.userId
+        loggedInUserId : state.auth.userId,
+        userWorkout : state.workout.workouts
     }
 }
 
-export default connect (mapStateToProps,{PersistBMIData,FetchBMIData})(BMICalculator);
+export default connect (mapStateToProps,{PersistBMIData,FetchBMIData,FetchWorkoutData})(BMICalculator);

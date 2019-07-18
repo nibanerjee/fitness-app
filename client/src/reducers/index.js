@@ -7,15 +7,30 @@ const INITIAL_STATE = {
 
 const USER = {
     userId : null,
-    bmi : null
+    bmi : null,
+    gender : null,
+    goal : null
+}
+
+const WORKOUTS = {
+    workouts : null
 }
 
 const UserReducer = (state = USER,action) => {
     switch(action.type){
         case 'PERSIST_BMI' :
-        return {...state,bmi : action.payload.bmi,userId : action.payload.userId};
+        return {...state,bmi : action.payload.bmi,userId : action.payload.userId,gender : action.payload.gender,goal : action.payload.goal};
         case 'FETCH_BMI' :
-        return {...state,bmi : action.payload[0].bmi,userId : action.payload[0].userId};
+        return {...state,bmi : action.payload[0].bmi,userId : action.payload[0].userId,gender : action.payload[0].gender,goal : action.payload[0].goal};
+        default:
+        return state;
+    }
+}
+
+const WorkoutReducer = (state = WORKOUTS,action) => {
+    switch(action.type){
+        case 'FETCH_WORKOUTS' :
+        return {...state,workouts : action.payload};
         default:
         return state;
     }
@@ -34,5 +49,6 @@ const AuthReducer = (state = INITIAL_STATE, action) => {
 
 export default combineReducers({
     auth : AuthReducer,
-    user : UserReducer
+    user : UserReducer,
+    workout : WorkoutReducer
 });
