@@ -11,6 +11,7 @@
             border-left: 15px solid #F57D3F;
             position: absolute;
             right: -75px;
+            top:-10%;
         }
         span{
             color:#000;
@@ -138,8 +139,10 @@
         .workout-icon{
             background-image: url(../assets/workout-icon.png);
             background-size: contain;
-            width:40px;
-            height : 40px;
+            width: 30px;
+            height: 30px;
+            margin-bottom: 15px;
+            margin-top: 15px;
         }
         .workout-list{
             padding : 0;
@@ -150,6 +153,7 @@
                 background-color: #222;
                 margin-bottom:15px;
                 text-indent :10px;
+                transform : skew(-15deg);
                 .workout-badge{
                     display: block;
                     width: 5px;

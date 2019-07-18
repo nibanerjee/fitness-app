@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "bmi": 24.691358024691358,
+      "bmi": 34.61224489795919,
       "userId": "102605792633118497929",
       "gender": "male",
-      "goal": "maintain",
+      "goal": "loss",
       "id": 1
     }
   ],
@@ -91,19 +91,19 @@
       "obese": {
         "loss": [
           {
-            "suggestion": "Bend and Lift Progression exercises like hip-bridge,trx squat,body weight squat and medicinal ball squat."
+            "suggestion": "Bend and Lift Progression exercises like hip-bridge,trx squat,body weight squat."
           },
           {
-            "suggestion": "Single leg movement patterns like static lunge,forward & backward walking,suitcase carries,and body weight step ups."
+            "suggestion": "Single leg movement patterns like static lunge,forward & backward walking,suitcase carries."
           },
           {
-            "suggestion": "push progression exercises like smith machine pushup, trx chest press,push up with legs on stability ball"
+            "suggestion": "push progression exercises like smith machine pushup, trx chest press"
           },
           {
             "suggestion": "pull progression exercises like smith machine rows,trx rows,unilateral and bilateral rows"
           },
           {
-            "suggestion": "rotational movement exercises like standing cable machine rotation,side lunge with torso rotation,side lunge with torso rotation"
+            "suggestion": "rotational movement exercises like standing cable machine rotation,side lunge with torso rotation"
           }
         ],
         "gain": [

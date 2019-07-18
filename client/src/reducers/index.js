@@ -19,9 +19,11 @@ const WORKOUTS = {
 const UserReducer = (state = USER,action) => {
     switch(action.type){
         case 'PERSIST_BMI' :
-        return {...state,bmi : action.payload.bmi,userId : action.payload.userId,gender : action.payload.gender,goal : action.payload.goal};
+        return {...state,bmi : action.payload.bmi,userId : action.payload.userId,gender : action.payload.gender,goal : action.payload.goal,id : action.payload.id};
+        case 'EDIT_BMI' :
+        return {...state,bmi : action.payload.bmi,userId : action.payload.userId,gender : action.payload.gender,goal : action.payload.goal,id : action.payload.id};
         case 'FETCH_BMI' :
-        return {...state,bmi : action.payload[0].bmi,userId : action.payload[0].userId,gender : action.payload[0].gender,goal : action.payload[0].goal};
+        return {...state,bmi : action.payload[0].bmi,userId : action.payload[0].userId,gender : action.payload[0].gender,goal : action.payload[0].goal,id : action.payload[0].id};
         default:
         return state;
     }
