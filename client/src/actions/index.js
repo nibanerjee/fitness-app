@@ -87,7 +87,7 @@ export const CreateUserPosts = (targetId,content) => {
 export const FetchUserPosts = () => {
     return async (dispatch,getState) => {
         const {userId} = getState().auth;
-        const response = await fitnessService.get(`/posts?=${userId}`);
+        const response = await fitnessService.get(`/posts?q=${userId}`);
         dispatch({
             type : 'FETCH_POSTS',
             payload : response.data

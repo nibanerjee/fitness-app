@@ -28,8 +28,12 @@ class UserForum extends React.Component {
     }
 
     postCommentHandler = () => {
-        console.log('post comment',this.state.userComment);
-        //this.props.CreateUserPosts();
+        const enteredComments = this.state.userComment;
+        let commentsCharArray = enteredComments.split(" ");
+        commentsCharArray = commentsCharArray.filter(comment => comment.indexOf('@') > -1);
+        const sourceId = this.props.userId;
+        const targetId = (commentsCharArray.length) ? commentsCharArray[0].substring(1, commentsCharArray[0].length) : sourceId;
+        this.props.CreateUserPosts(targetId,enteredComments);
     }
     onUserCommentChange = (e) => {
         this.setState({userComment : e.target.value})
@@ -52,14 +56,19 @@ class UserForum extends React.Component {
                             <div>
                                 <div className="title">User Forum Discussion</div>
                                 {this.props.userPosts.map((post, i)=> {
+                                    let videoContentArray = post.content.split(" ");
+                                    videoContentArray = videoContentArray.filter(content => content.indexOf('https://www.youtube.com/') > -1);
+                                    const videoId = (videoContentArray.length > 0) ? videoContentArray[0].slice(-11) : null;
                                     return (
                                         <li key={i} className={"user-comment" + (post.sourceId === this.props.userId ? ' self-comment' : '')}>
                                             <div className="user-img"><i className="fas fa-user-tie"></i></div>
                                             <div className="comment-details">
                                                 {post.content}
-                                                <iframe width="100%" height="300"
-                                                    src="https://www.youtube.com/embed/fcN37TxBE_s?autoplay=1">
-                                                </iframe>
+                                                {videoContentArray.length > 0 && videoId != null &&
+                                                    <iframe width="100%" height="300"
+                                                        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}>
+                                                    </iframe>
+                                                }
                                             </div>
                                         </li>
                                     )
