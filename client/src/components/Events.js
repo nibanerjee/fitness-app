@@ -1,6 +1,7 @@
 import React from 'react';
 import { headerItems } from './Constants';
 import { connect } from 'react-redux';
+import './Events.scss';
 import { UpdateRegisteredEvents,FetchEvents,FetchBMIData} from '../actions';
 
 class Events extends React.Component{
@@ -27,16 +28,22 @@ class Events extends React.Component{
 
     render(){
         return (
-            <div className="row">
+            <div className="container event-container">
                { this.props.allEvents != null && this.props.isSignedIn &&
-                    <div className="col-md-12 no-padding">
+                    <div className="row">
                         {this.props.allEvents.map((event,index)=>{
                             return (
-                                <div className="col-md-4" key={index}>
-                                    <label>{event.eventName}</label>
-                                    { (event.userRegistered == '' || event.userRegistered.indexOf(this.props.loggedInUserId) == -1) &&
-                                        <button onClick={() => this.registerEvent(event.id,event.userRegistered)}>Register</button>
-                                    }
+                                <div className="events-card col-md-6" key={index}>
+                                    <div className="left col-md-8 no-padding">
+                                        <div className="event-detail">{event.eventName}</div>
+                                    </div>
+                                    <div className="right col-md-4 text-center no-padding">
+                                        { (event.userRegistered == '' || event.userRegistered.indexOf(this.props.loggedInUserId) == -1) ? (
+                                            <button onClick={() => this.registerEvent(event.id,event.userRegistered)}>Register</button>
+                                        ) : (
+                                            <div>You have already registered for the event</div>
+                                        )}
+                                    </div>
                                 </div>
                             )
                         })}
