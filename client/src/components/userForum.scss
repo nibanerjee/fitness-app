@@ -51,6 +51,14 @@ $orange: #F57D3F;
 			&.self-comment {
 				border-left: 0;
 				border-right: 2px solid $orange;
+				.user-img {
+					float: right;
+				}
+				.comment-details {
+					float: right;
+					margin-left: 0;
+					margin-right: 20px;
+				}
 			}
 			.user-img {
 			    width: 50px;
@@ -69,4 +77,10 @@ $orange: #F57D3F;
 			}
 		}
 	}
+}
+.no-post {
+	margin: 20px;
+	border: 2px solid $orange;
+	padding: 15px 20px;
+	font-size: 16px;
 }

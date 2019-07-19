@@ -60,7 +60,7 @@ class UserForum extends React.Component {
                         </ul>
                     </div>
                 ) : (
-                    <div>
+                    <div className="no-post">
                         No posts available. Please login to view your posts
                     </div>
                 )}
@@ -73,7 +73,7 @@ const mapStateToProps = (state) => {
     return {
         userPosts : state.post.posts,
         isSignedIn : state.auth.isSignedIn,
-        userId : state.user.userId
+        userId : state.auth.userId
     }
 }
 

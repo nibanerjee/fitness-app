@@ -35,6 +35,10 @@ class Events extends React.Component{
                             return (
                                 <div className="events-card col-md-6" key={index}>
                                     <div className="left col-md-8 no-padding">
+                                        <div className="event-img">
+                                            {event.eventImg && <img src={event.eventImg} alt={event.eventName} />}
+                                            {!event.eventImg && <i className="fas fa-running"></i>}
+                                        </div>
                                         <div className="event-detail">{event.eventName}</div>
                                     </div>
                                     <div className="right col-md-4 text-center no-padding">

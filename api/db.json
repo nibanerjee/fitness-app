@@ -266,22 +266,26 @@
     {
       "id": 1,
       "eventName": "5K Marathon on 15th Aug",
-      "userRegistered": "102605792633118497929"
+      "userRegistered": "102605792633118497929",
+      "eventImg": "https://perthurbanrunners.com/wp-content/uploads/2016/05/f63ff0bb-8885-478a-8a24-57391358a19e.jpg"
     },
     {
       "id": 2,
       "eventName": "100 KM cycling on 29th Aug",
-      "userRegistered": "102605792633118497929"
+      "userRegistered": "102605792633118497929",
+      "eventImg": "https://cdn.amgentourofcalifornia.com/uploads/homepage/WomensRoute_Marketing-Spots.jpg"
     },
     {
       "id": 3,
       "eventName": "Bangalore Mini Triathlon on 7th Sep",
-      "userRegistered": ""
+      "userRegistered": "",
+      "eventImg": ""
     },
     {
       "id": 4,
       "eventName": "10K walkathon on 20th Sep",
-      "userRegistered": ""
+      "userRegistered": "",
+      "eventImg": ""
     }
   ]
 }
