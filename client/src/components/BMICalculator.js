@@ -12,6 +12,10 @@ class BMICalculator extends React.Component{
         goal : '',
     }
 
+    componentDidMount(){
+        this.props.FetchBMIData();
+    }
+
     componentDidUpdate(prevProps,prevState){
         if((this.props.existingUserBMI !== prevProps.existingUserBMI) 
         ||(this.props.existingUserGoal !== prevProps.existingUserGoal)){

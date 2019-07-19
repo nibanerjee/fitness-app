@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "bmi": 34.61224489795919,
+      "bmi": 24.382716049382715,
       "userId": "102605792633118497929",
       "gender": "male",
-      "goal": "loss",
+      "goal": "maintain",
       "id": 1
     },
     {
@@ -234,5 +234,12 @@
         ]
       }
     }
-  }
+  },
+  "posts": [
+    {
+      "sourceId": "102605792633118497929",
+      "targetId": "102605792633118497929",
+      "content": "this is nilanjan's first comment"
+    }
+  ]
 }

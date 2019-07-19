@@ -15,9 +15,9 @@ const headerItems = [
       'link': '/bmicalc',
       'active': false
     }, {
-      'title': 'training',
-      'class': 'training',
-      'link': '/training',
+      'title': 'user forum',
+      'class': 'user-forum',
+      'link': '/userforum',
       'active': false
     }, {
       'title': 'events',
