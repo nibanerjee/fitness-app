@@ -12,7 +12,19 @@ class UserForum extends React.Component {
     render(){
         return (
             <div className="row">
-                User Forum Page
+                {this.props.userPosts != null && this.props.isSignedIn ? (
+                    <ul>
+                        {this.props.userPosts.map((post)=> {
+                            return (
+                                <li>{post.content}</li>
+                            )
+                        })}
+                    </ul>
+                ) : (
+                    <div>
+                        No posts available.Please login to view your posts
+                    </div>
+                )}
             </div>
         );
     }
@@ -20,7 +32,8 @@ class UserForum extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        userPosts : state.post.posts
+        userPosts : state.post.posts,
+        isSignedIn : state.auth.isSignedIn
     }
 }
 
