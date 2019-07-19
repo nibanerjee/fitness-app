@@ -29,7 +29,7 @@ class Events extends React.Component{
     render(){
         return (
             <div className="container event-container">
-               { this.props.allEvents != null && this.props.isSignedIn &&
+               { this.props.allEvents != null && this.props.isSignedIn ? (
                     <div className="row">
                         {this.props.allEvents.map((event,index)=>{
                             return (
@@ -52,7 +52,11 @@ class Events extends React.Component{
                             )
                         })}
                     </div>
-               }
+               ):(
+                    <div className="no-post">
+                        No events available. Please login to view your registered events
+                    </div>
+               )}
             </div>
         );
     }

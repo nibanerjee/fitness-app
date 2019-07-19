@@ -42,7 +42,7 @@ class UserForum extends React.Component {
     render(){
         return (
             <div className="row">
-                {this.props.userPosts != null && this.props.isSignedIn ? (
+                {this.props.userPosts != null && this.props.isSignedIn ? 
                     <div className="post-challenge-wrapper row">
                         <div className="add-challenge col-sm-6">
                             <div>
@@ -76,11 +76,16 @@ class UserForum extends React.Component {
                             </div>
                         </ul>
                     </div>
-                ) : (
-                    <div className="no-post">
-                        No posts available. Please login to view your posts
-                    </div>
-                )}
+                 : [(this.props.userPosts == null ?
+                        <div className="no-post">
+                            The posts are being fetched please wait
+                        </div>
+                     : 
+                        <div className="no-post">
+                            No posts available. Please login to view your posts
+                        </div>
+                     )
+                    ]}
             </div>
         );
     }
