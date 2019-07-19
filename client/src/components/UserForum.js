@@ -5,6 +5,10 @@ import { headerItems } from './Constants';
 import './userForum.scss';
 
 class UserForum extends React.Component {
+    state = {
+        userComment : ''
+    }
+
     componentDidMount(){
         this.setActiveItem();
         this.interval = setInterval(() => this.props.FetchUserPosts(), 2500);
@@ -24,7 +28,11 @@ class UserForum extends React.Component {
     }
 
     postCommentHandler = () => {
-        console.log('post comment', this.userId);
+        console.log('post comment',this.state.userComment);
+        //this.props.CreateUserPosts();
+    }
+    onUserCommentChange = (e) => {
+        this.setState({userComment : e.target.value})
     }
 
     render(){
@@ -35,7 +43,7 @@ class UserForum extends React.Component {
                         <div className="add-challenge col-sm-6">
                             <div>
                                 <div className="title">Post a Challenge</div>
-                                <textarea rows="6" placeholder="Post a comment or enter a youtube video URL">
+                                <textarea rows="6" placeholder="Post a comment or enter a youtube video URL" value={this.state.userComment} onChange={(e) => this.onUserCommentChange(e)}>
                                 </textarea>
                                 <button onClick={this.postCommentHandler} className="post-btn pull-right">POST</button>
                                 </div>
@@ -73,7 +81,7 @@ const mapStateToProps = (state) => {
     return {
         userPosts : state.post.posts,
         isSignedIn : state.auth.isSignedIn,
-        userId : state.user.userId
+        userId : state.auth.userId
     }
 }
 
