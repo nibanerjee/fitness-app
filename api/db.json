@@ -5,14 +5,16 @@
       "userId": "102605792633118497929",
       "gender": "male",
       "goal": "loss",
-      "id": 1
+      "id": 1,
+      "eventsRegistered": "E1,E2,E4"
     },
     {
       "bmi": 19.14672216441207,
       "userId": "109619594323771471060",
       "gender": "female",
       "goal": "maintain",
-      "id": 2
+      "id": 2,
+      "eventsRegistered": ""
     }
   ],
   "workouts": {
@@ -240,6 +242,24 @@
       "sourceId": "102605792633118497929",
       "targetId": "102605792633118497929",
       "content": "this is nilanjan's first comment"
+    }
+  ],
+  "events": [
+    {
+      "eventId": "E1",
+      "eventName": "5K Marathon on 15th Aug"
+    },
+    {
+      "eventId": "E2",
+      "eventName": "100 KM cycling on 29th Aug"
+    },
+    {
+      "eventId": "E3",
+      "eventName": "Bangalore Mini Triathlon on 7th Sep"
+    },
+    {
+      "eventId": "E4",
+      "eventName": "10K walkathon on 20th Sep"
     }
   ]
 }
