@@ -20,6 +20,10 @@ const POSTS = {
     posts : null
 }
 
+const EVENTS = {
+    events : null
+}
+
 const UserReducer = (state = USER,action) => {
     switch(action.type){
         case 'PERSIST_BMI' :
@@ -64,9 +68,21 @@ const PostReducer = (state = POSTS, action) => {
     }
 }
 
+const EventReducer = (state = EVENTS, action) => {
+    switch(action.type){
+        case 'FETCH_EVENTS' :
+        return {...state, events : action.payload}
+        case 'UPDATE_REGISTERED_EVENTS' :
+        return {...state,events : action.payload};
+        default :
+        return state;
+    }
+}
+
 export default combineReducers({
     auth : AuthReducer,
     user : UserReducer,
     workout : WorkoutReducer,
-    post : PostReducer
+    post : PostReducer,
+    event : EventReducer
 });

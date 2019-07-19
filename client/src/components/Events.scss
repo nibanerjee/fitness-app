@@ -1,0 +1,35 @@
+.event-container{
+    margin : 25px 0;
+    .events-card{
+        margin-bottom:30px;
+        .right{
+            background-color:#F57D3F;
+            min-height : 200px;
+            button{
+                background-color: #000;
+                border: 0;
+                outline: 0;
+                border-radius: 30px;
+                padding: 15px 40px;
+                margin-top: calc(50% - 15px);
+            }
+            div{
+                margin-top: calc(50% - 5px);
+                color:#000;
+            }
+
+        }
+        .left{
+            background-color:#000;
+            min-height : 200px;
+            .event-detail{
+                padding: 20px 10px;
+                bottom: 0;
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                border-top: 1px solid #F57D3F;
+            }
+        }
+    }
+}

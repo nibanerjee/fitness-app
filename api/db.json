@@ -261,5 +261,27 @@
       "targetId": "102605792633118497929",
       "content": "This is a wrkout video. https://www.youtube.com/watch?v=fcN37TxBE_s"
     }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "eventName": "5K Marathon on 15th Aug",
+      "userRegistered": "102605792633118497929"
+    },
+    {
+      "id": 2,
+      "eventName": "100 KM cycling on 29th Aug",
+      "userRegistered": "102605792633118497929"
+    },
+    {
+      "id": 3,
+      "eventName": "Bangalore Mini Triathlon on 7th Sep",
+      "userRegistered": ""
+    },
+    {
+      "id": 4,
+      "eventName": "10K walkathon on 20th Sep",
+      "userRegistered": ""
+    }
   ]
 }

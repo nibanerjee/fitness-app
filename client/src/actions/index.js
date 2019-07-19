@@ -94,3 +94,24 @@ export const FetchUserPosts = () => {
         });
     }
 }
+
+export const UpdateRegisteredEvents = (userRegistered,eventId) => {
+    return async (dispatch,getState) => {
+        const response = await fitnessService.patch(`/events/${eventId}`,{userRegistered});
+        const updatedresponse = await fitnessService.get('/events');
+        dispatch({
+            type : 'UPDATE_REGISTERED_EVENTS',
+            payload : updatedresponse.data
+        });
+    }
+}
+
+export const FetchEvents = () => {
+    return async (dispatch,getState) => {
+        const response = await fitnessService.get('/events');
+        dispatch({
+            type : 'FETCH_EVENTS',
+            payload : response.data
+        });
+    }
+}
