@@ -6,6 +6,13 @@
       "gender": "male",
       "goal": "maintain",
       "id": 1
+    },
+    {
+      "bmi": 19.14672216441207,
+      "userId": "109619594323771471060",
+      "gender": "female",
+      "goal": "maintain",
+      "id": 2
     }
   ],
   "workouts": {
