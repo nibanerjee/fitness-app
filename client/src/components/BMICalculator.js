@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PersistBMIData,FetchBMIData,FetchWorkoutData,EditBMIData} from '../actions';
+import { headerItems } from './Constants';
 import './BMICalculator.scss';
 
 class BMICalculator extends React.Component{
@@ -13,6 +14,7 @@ class BMICalculator extends React.Component{
     }
 
     componentDidMount(){
+        this.setActiveItem();
         this.props.FetchBMIData();
     }
 
@@ -24,6 +26,16 @@ class BMICalculator extends React.Component{
         || (this.props.existingUserId === this.props.loggedInUserId && this.state === prevState)){
             this.props.FetchBMIData();
         }
+    }
+    
+    setActiveItem = () => {
+        var path = this.props.history.location.pathname;
+        headerItems.map(function(val,ind) {
+          val.active = false;
+          if(val.link === path) {
+            val.active = true;
+          }
+        })
     }
 
     onGenderChange = (e,gender) => {

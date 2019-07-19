@@ -1,14 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { CreateUserPosts,FetchUserPosts } from '../actions';
+import { headerItems } from './Constants';
 
 class UserForum extends React.Component {
     componentDidMount(){
+        this.setActiveItem();
         this.interval = setInterval(() => this.props.FetchUserPosts(), 2500);
     }
     componentWillUnmount() {
         clearInterval(this.interval);
     }
+
+    setActiveItem = () => {
+        var path = this.props.history.location.pathname;
+        headerItems.map(function(val,ind) {
+          val.active = false;
+          if(val.link === path) {
+            val.active = true;
+          }
+        })
+    }
+
     render(){
         return (
             <div className="row">
