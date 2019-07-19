@@ -68,7 +68,7 @@ class UserForum extends React.Component {
                         </ul>
                     </div>
                 ) : (
-                    <div>
+                    <div className="no-post">
                         No posts available. Please login to view your posts
                     </div>
                 )}

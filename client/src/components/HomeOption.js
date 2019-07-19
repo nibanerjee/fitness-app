@@ -9,6 +9,7 @@ function HomeOption(props) {
 				<div className="card-cta">
 					<a href={props.link} className="btn cta-btn">
 						Go
+						<i className="fas fa-angle-right"></i>
 					</a>
 				</div>
 			</div>
