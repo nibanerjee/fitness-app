@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { CreateUserPosts,FetchUserPosts } from '../actions';
 import { headerItems } from './Constants';
+import './userForum.scss';
 
 class UserForum extends React.Component {
     componentDidMount(){
@@ -22,20 +23,45 @@ class UserForum extends React.Component {
         })
     }
 
+    postCommentHandler = () => {
+        console.log('post comment', this.userId);
+    }
+
     render(){
         return (
             <div className="row">
                 {this.props.userPosts != null && this.props.isSignedIn ? (
-                    <ul>
-                        {this.props.userPosts.map((post)=> {
-                            return (
-                                <li>{post.content}</li>
-                            )
-                        })}
-                    </ul>
+                    <div className="post-challenge-wrapper row">
+                        <div className="add-challenge col-sm-6">
+                            <div>
+                                <div className="title">Post a Challenge</div>
+                                <textarea rows="6" placeholder="Post a comment or enter a youtube video URL">
+                                </textarea>
+                                <button onClick={this.postCommentHandler} className="post-btn pull-right">POST</button>
+                                </div>
+                        </div>
+                        <ul className="user-comments-wrapper col-sm-6">
+                            <div>
+                                <div className="title">User Forum Discussion</div>
+                                {this.props.userPosts.map((post, i)=> {
+                                    return (
+                                        <li key={i} className={"user-comment" + (post.sourceId === this.props.userId ? ' self-comment' : '')}>
+                                            <div className="user-img"><i className="fas fa-user-tie"></i></div>
+                                            <div className="comment-details">
+                                                {post.content}
+                                                <iframe width="100%" height="300"
+                                                    src="https://www.youtube.com/embed/fcN37TxBE_s?autoplay=1">
+                                                </iframe>
+                                            </div>
+                                        </li>
+                                    )
+                                })}
+                            </div>
+                        </ul>
+                    </div>
                 ) : (
                     <div>
-                        No posts available.Please login to view your posts
+                        No posts available. Please login to view your posts
                     </div>
                 )}
             </div>
@@ -46,7 +72,8 @@ class UserForum extends React.Component {
 const mapStateToProps = (state) => {
     return {
         userPosts : state.post.posts,
-        isSignedIn : state.auth.isSignedIn
+        isSignedIn : state.auth.isSignedIn,
+        userId : state.user.userId
     }
 }
 
