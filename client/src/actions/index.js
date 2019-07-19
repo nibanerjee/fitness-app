@@ -76,7 +76,7 @@ export const FetchWorkoutData = () => {
 export const CreateUserPosts = (targetId,content) => {
     return async (dispatch,getState) => {
         const {userId} = getState().auth;
-        const response = await fitnessService.get('/posts',{sourceId : userId,targetId,content});
+        const response = await fitnessService.post('/posts',{sourceId : userId,targetId,content});
         dispatch({
             type : 'CREATE_POSTS',
             payload : response.data
@@ -87,7 +87,7 @@ export const CreateUserPosts = (targetId,content) => {
 export const FetchUserPosts = () => {
     return async (dispatch,getState) => {
         const {userId} = getState().auth;
-        const response = await fitnessService.post(`/posts?q=${userId}`);
+        const response = await fitnessService.get(`/posts?=${userId}`);
         dispatch({
             type : 'FETCH_POSTS',
             payload : response.data

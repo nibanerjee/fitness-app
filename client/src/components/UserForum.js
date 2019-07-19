@@ -4,7 +4,10 @@ import { CreateUserPosts,FetchUserPosts } from '../actions';
 
 class UserForum extends React.Component {
     componentDidMount(){
-
+        this.interval = setInterval(() => this.props.FetchUserPosts(), 5000);
+    }
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
     render(){
         return (
