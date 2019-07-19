@@ -16,6 +16,10 @@ const WORKOUTS = {
     workouts : null
 }
 
+const POSTS = {
+    posts : null
+}
+
 const UserReducer = (state = USER,action) => {
     switch(action.type){
         case 'PERSIST_BMI' :
@@ -49,8 +53,20 @@ const AuthReducer = (state = INITIAL_STATE, action) => {
    }
 };
 
+const PostReducer = (state = POSTS, action) => {
+    switch(action.type){
+        case 'CREATE_POSTS' :
+        return {...state, sourceId : action.payload.sourceId,targetId : action.payload.targetId,content : action.payload.content}
+        case 'FETCH_POSTS':
+        return {...state, posts : action.payload}
+        default :
+        return state;
+    }
+}
+
 export default combineReducers({
     auth : AuthReducer,
     user : UserReducer,
-    workout : WorkoutReducer
+    workout : WorkoutReducer,
+    post : PostReducer
 });
