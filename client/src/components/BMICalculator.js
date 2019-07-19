@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { PersistBMIData,FetchBMIData,FetchWorkoutData } from '../actions';
+import { PersistBMIData,FetchBMIData,FetchWorkoutData,EditBMIData} from '../actions';
 import './BMICalculator.scss';
 
 class BMICalculator extends React.Component{
@@ -12,11 +12,12 @@ class BMICalculator extends React.Component{
         goal : '',
     }
 
-    componentDidUpdate(prevProps){
-        if(this.props.existingUserBMI !== prevProps.existingUserBMI){
+    componentDidUpdate(prevProps,prevState){
+        if((this.props.existingUserBMI !== prevProps.existingUserBMI) 
+        ||(this.props.existingUserGoal !== prevProps.existingUserGoal)){
             this.props.FetchWorkoutData(this.state.gender,this.state.goal);
         } else if((this.props.loggedInUserId !== prevProps.loggedInUserId) 
-        || (this.props.existingUserId === this.props.loggedInUserId)){
+        || (this.props.existingUserId === this.props.loggedInUserId && this.state === prevState)){
             this.props.FetchBMIData();
         }
     }
@@ -56,11 +57,15 @@ class BMICalculator extends React.Component{
     }
     calculateBMI = () => {
         if(this.state.age !== '' && this.state.weight !== '' && this.state.height !== '' && 
-        this.state.gender !== '' && this.state.goal !== '' && this.props.existingUserBMI === null){
+        this.state.gender !== '' && this.state.goal !== ''){
             const weight = this.state.weight;
             const heightInMetres = this.state.height / 100;
             const bmi = weight / (heightInMetres * heightInMetres);
-            this.props.PersistBMIData(bmi,this.state.gender,this.state.goal);
+            if(this.props.existingUserBMI === null){
+                this.props.PersistBMIData(bmi,this.state.gender,this.state.goal);
+            } else {
+                this.props.EditBMIData(bmi,this.state.gender,this.state.goal);
+            }
         }
     }
     render(){
@@ -109,9 +114,9 @@ class BMICalculator extends React.Component{
                     </div>
                 </div>
                 <div className="col-md-7 training-module-wrapper">
-                    <div className="training-module">
-                        {this.props.existingUserBMI != null && this.props.loggedInUserId != null && this.props.userWorkout != null &&
-                            <div>
+                    <div className="col-md-12 training-module">
+                        {this.props.existingUserBMI != null && this.props.loggedInUserId != null && this.props.userWorkout != null ? (
+                            <div className="col-md-12 no-padding">
                                 <div className="clearfix">
                                     <div className="pull-left">
                                         BMI : <span className="bmi-val">{this.props.existingUserBMI}</span>
@@ -127,7 +132,9 @@ class BMICalculator extends React.Component{
                                     })}
                                 </ul>
                             </div>
-                        }
+                        ) : (
+                            <div className="col-md-12 no-padding">No BMI data present.Please login to access your workouts or calculate BMI if you're a first time user.</div>
+                        )}
                     </div>
                 </div>
             </div>
@@ -144,4 +151,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect (mapStateToProps,{PersistBMIData,FetchBMIData,FetchWorkoutData})(BMICalculator);
+export default connect (mapStateToProps,{PersistBMIData,FetchBMIData,FetchWorkoutData,EditBMIData})(BMICalculator);

@@ -24,6 +24,20 @@ export const PersistBMIData = (bmi,gender,goal) => {
    }
 }
 
+export const EditBMIData = (bmi,gender,goal) => {
+    return async (dispatch,getState) => {
+         const {userId} = getState().auth;
+         console.log(getState().user);
+         const {id} = getState().user;
+         const response = await fitnessService.patch(`/users/${id}`,{bmi,userId,gender,goal});
+         dispatch({
+             type : 'EDIT_BMI',
+             payload : response.data
+         });
+    }
+ }
+
+
 export const FetchBMIData = () => {
     return async (dispatch,getState) => {
         const {userId} = getState().auth;
