@@ -9,8 +9,7 @@ const USER = {
     userId : null,
     bmi : null,
     gender : null,
-    goal : null,
-    eventsRegistered : ''
+    goal : null
 }
 
 const WORKOUTS = {
@@ -28,13 +27,11 @@ const EVENTS = {
 const UserReducer = (state = USER,action) => {
     switch(action.type){
         case 'PERSIST_BMI' :
-        return {...state,bmi : action.payload.bmi,userId : action.payload.userId,gender : action.payload.gender,goal : action.payload.goal,id : action.payload.id,eventsRegistered : action.payload.eventsRegistered};
+        return {...state,bmi : action.payload.bmi,userId : action.payload.userId,gender : action.payload.gender,goal : action.payload.goal,id : action.payload.id};
         case 'EDIT_BMI' :
-        return {...state,bmi : action.payload.bmi,userId : action.payload.userId,gender : action.payload.gender,goal : action.payload.goal,id : action.payload.id,eventsRegistered : action.payload.eventsRegistered};
+        return {...state,bmi : action.payload.bmi,userId : action.payload.userId,gender : action.payload.gender,goal : action.payload.goal,id : action.payload.id};
         case 'FETCH_BMI' :
-        return {...state,bmi : action.payload[0].bmi,userId : action.payload[0].userId,gender : action.payload[0].gender,goal : action.payload[0].goal,id : action.payload[0].id,eventsRegistered : action.payload[0].eventsRegistered};
-        case 'UPDATE_REGISTERED_EVENTS' :
-        return {...state,bmi : action.payload.bmi,userId : action.payload.userId,gender : action.payload.gender,goal : action.payload.goal,id : action.payload.id,eventsRegistered : action.payload.eventsRegistered};
+        return {...state,bmi : action.payload[0].bmi,userId : action.payload[0].userId,gender : action.payload[0].gender,goal : action.payload[0].goal,id : action.payload[0].id};
         default:
         return state;
     }
@@ -75,6 +72,8 @@ const EventReducer = (state = EVENTS, action) => {
     switch(action.type){
         case 'FETCH_EVENTS' :
         return {...state, events : action.payload}
+        case 'UPDATE_REGISTERED_EVENTS' :
+        return {...state,events : action.payload};
         default :
         return state;
     }

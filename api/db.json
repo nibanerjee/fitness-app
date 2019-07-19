@@ -5,16 +5,14 @@
       "userId": "102605792633118497929",
       "gender": "male",
       "goal": "loss",
-      "id": 1,
-      "eventsRegistered": "E1,E2,E4"
+      "id": 1
     },
     {
       "bmi": 19.14672216441207,
       "userId": "109619594323771471060",
       "gender": "female",
       "goal": "maintain",
-      "id": 2,
-      "eventsRegistered": ""
+      "id": 2
     }
   ],
   "workouts": {
@@ -246,20 +244,24 @@
   ],
   "events": [
     {
-      "eventId": "E1",
-      "eventName": "5K Marathon on 15th Aug"
+      "id": 1,
+      "eventName": "5K Marathon on 15th Aug",
+      "userRegistered": ""
     },
     {
-      "eventId": "E2",
-      "eventName": "100 KM cycling on 29th Aug"
+      "id": 2,
+      "eventName": "100 KM cycling on 29th Aug",
+      "userRegistered": ""
     },
     {
-      "eventId": "E3",
-      "eventName": "Bangalore Mini Triathlon on 7th Sep"
+      "id": 3,
+      "eventName": "Bangalore Mini Triathlon on 7th Sep",
+      "userRegistered": ""
     },
     {
-      "eventId": "E4",
-      "eventName": "10K walkathon on 20th Sep"
+      "id": 4,
+      "eventName": "10K walkathon on 20th Sep",
+      "userRegistered": ""
     }
   ]
 }

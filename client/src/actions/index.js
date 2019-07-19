@@ -16,7 +16,7 @@ export const signOut = () => {
 export const PersistBMIData = (bmi,gender,goal) => {
    return async (dispatch,getState) => {
         const {userId} = getState().auth;
-        const response = await fitnessService.post('/users',{bmi,userId,gender,goal,eventsRegistered : ''});
+        const response = await fitnessService.post('/users',{bmi,userId,gender,goal});
         dispatch({
             type : 'PERSIST_BMI',
             payload : response.data
@@ -95,14 +95,13 @@ export const FetchUserPosts = () => {
     }
 }
 
-export const UpdateRegisteredEvents = (eventsRegistered) => {
+export const UpdateRegisteredEvents = (userRegistered,eventId) => {
     return async (dispatch,getState) => {
-        const {userId} = getState().auth;
-        const {id} = getState().user;
-        const response = await fitnessService.patch(`/users/${id}`,{userId,eventsRegistered});
+        const response = await fitnessService.patch(`/events/${eventId}`,{userRegistered});
+        const updatedresponse = await fitnessService.get('/events');
         dispatch({
             type : 'UPDATE_REGISTERED_EVENTS',
-            payload : response.data
+            payload : updatedresponse.data
         });
     }
 }

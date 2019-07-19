@@ -7,14 +7,8 @@ class Events extends React.Component{
     componentDidMount(){
         this.setActiveItem();
         this.props.FetchEvents();
-        this.props.FetchBMIData();
     }
-    componentDidUpdate(prevProps,prevState){
-        if((this.props.loggedInUserId !== prevProps.loggedInUserId) 
-        || (this.props.existingUserId === this.props.loggedInUserId && this.state === prevState)){
-            this.props.FetchBMIData();
-        }
-    }
+
     setActiveItem = () => {
         var path = this.props.history.location.pathname;
         headerItems.map(function(val,ind) {
@@ -25,10 +19,10 @@ class Events extends React.Component{
         })
     }
 
-    registerEvent = (eventId) => {
-        const registeredEvents = this.props.registeredEvents;
-        const updatedEvents = (registeredEvents == '') ? (registeredEvents + eventId) : (registeredEvents + ',' + eventId);
-        this.props.UpdateRegisteredEvents(updatedEvents);
+    registerEvent = (eventId,userRegistered) => {
+        const userId = this.props.loggedInUserId;
+        const updatedUsers = (userRegistered == '') ? (userRegistered + userId) : (userRegistered + ',' + userId);
+        this.props.UpdateRegisteredEvents(updatedUsers,eventId);
     }
 
     render(){
@@ -40,8 +34,8 @@ class Events extends React.Component{
                             return (
                                 <div className="col-md-4" key={index}>
                                     <label>{event.eventName}</label>
-                                    { this.props.registeredEvents.indexOf(event.eventId) == -1 &&
-                                        <button onClick={() => this.registerEvent(event.eventId)}>Register</button>
+                                    { (event.userRegistered == '' || event.userRegistered.indexOf(this.props.loggedInUserId) == -1) &&
+                                        <button onClick={() => this.registerEvent(event.id,event.userRegistered)}>Register</button>
                                     }
                                 </div>
                             )
@@ -55,7 +49,6 @@ class Events extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        registeredEvents : state.user.eventsRegistered,
         allEvents : state.event.events,
         isSignedIn : state.auth.isSignedIn,
         existingUserId : state.user.userId,
