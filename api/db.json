@@ -1,19 +1,5 @@
 {
   "users": [
-    {
-      "bmi": 25.40408163265306,
-      "userId": "102605792633118497929",
-      "gender": "male",
-      "goal": "loss",
-      "id": 1
-    },
-    {
-      "bmi": 19.14672216441207,
-      "userId": "109619594323771471060",
-      "gender": "female",
-      "goal": "maintain",
-      "id": 2
-    }
   ],
   "workouts": {
     "male": {
