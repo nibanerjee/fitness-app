@@ -1,0 +1,21 @@
+{
+  "name": "fitness-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd client && PORT=3000 npm start\" \"cd api && PORT=3001 npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nibanerjee/fitness-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nibanerjee/fitness-app/issues"
+  },
+  "homepage": "https://github.com/nibanerjee/fitness-app#readme"
+}
