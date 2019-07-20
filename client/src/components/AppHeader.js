@@ -9,7 +9,7 @@ class AppHeader extends React.Component{
    componentDidMount(){
        window.gapi.load('client:auth2',() => {
            window.gapi.client.init({
-               clientId:'504415059984-8kjtb08nf930hntdqg2upo6nfkdusk66.apps.googleusercontent.com',
+               clientId:'651413844283-e5ja7q4187si5uarn79u9cer6790r56s.apps.googleusercontent.com',
                scope:'email' 
            }).then(() => {
                this.auth = window.gapi.auth2.getAuthInstance();
