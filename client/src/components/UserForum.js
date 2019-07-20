@@ -28,12 +28,14 @@ class UserForum extends React.Component {
     }
 
     postCommentHandler = () => {
-        const enteredComments = this.state.userComment;
-        let commentsCharArray = enteredComments.split(" ");
-        commentsCharArray = commentsCharArray.filter(comment => comment.indexOf('@') > -1);
-        const sourceId = this.props.userId;
-        const targetId = (commentsCharArray.length) ? commentsCharArray[0].substring(1, commentsCharArray[0].length) : sourceId;
-        this.props.CreateUserPosts(targetId,enteredComments);
+        if(this.state.userComment) {
+            const enteredComments = this.state.userComment;
+            let commentsCharArray = enteredComments.split(" ");
+            commentsCharArray = commentsCharArray.filter(comment => comment.indexOf('@') > -1);
+            const sourceId = this.props.userId;
+            const targetId = (commentsCharArray.length) ? commentsCharArray[0].substring(1, commentsCharArray[0].length) : sourceId;
+            this.props.CreateUserPosts(targetId,enteredComments);
+        }
     }
     onUserCommentChange = (e) => {
         this.setState({userComment : e.target.value})
@@ -49,7 +51,7 @@ class UserForum extends React.Component {
                                 <div className="title">Post a Challenge</div>
                                 <textarea rows="6" placeholder="Post a comment or enter a youtube video URL" value={this.state.userComment} onChange={(e) => this.onUserCommentChange(e)}>
                                 </textarea>
-                                <button onClick={this.postCommentHandler} className="post-btn pull-right">POST</button>
+                                <button type="button" onClick={this.postCommentHandler} className="post-btn pull-right">POST</button>
                                 </div>
                         </div>
                         <ul className="user-comments-wrapper col-sm-6">

@@ -113,6 +113,10 @@
                 line-height: 40px;
                 outline:0;
                 font-weight:600;
+                border: 1px solid transparent;
+                &:focus {
+                    border: 1px solid #ccc;
+                }
                 &.clear{
                     background-color: transparent;
                     color:#000;

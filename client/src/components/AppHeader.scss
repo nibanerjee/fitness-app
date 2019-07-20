@@ -23,10 +23,17 @@ $orange: #F57D3F;
   button{
     background-color: $orange;
     border-radius: 30px;
-    padding: 10px 20px;
+    padding: 8px 20px;
     border: 0;
     outline:0;
     color : #FFF;
     margin: 15px 0;
+    border: 1px solid $orange;
+    &:focus {
+      border: 1px solid #fff;
+    }
+    i {
+      margin-left: 6px;
+    }
   }
 }

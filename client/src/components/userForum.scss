@@ -33,6 +33,10 @@ $orange: #F57D3F;
 		    outline: 0;
 		    color: #FFF;
 		    margin: 0 10px 15px;
+		    border: 1px solid $orange;
+		    &:focus {
+		    	border: 1px solid #fff;
+		    }
     	}
 	}
 	.user-comments-wrapper {
