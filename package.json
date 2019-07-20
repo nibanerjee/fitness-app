@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/nibanerjee/fitness-app/issues"
   },
-  "homepage": "https://github.com/nibanerjee/fitness-app#readme"
+  "homepage": "https://github.com/nibanerjee/fitness-app#readme",
+  "dependencies": {
+    "concurrently": "^4.1.1"
+  }
 }
