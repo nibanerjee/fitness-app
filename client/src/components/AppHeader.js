@@ -41,15 +41,15 @@ class AppHeader extends React.Component{
        } else if(this.props.isSignedIn) {
            return (
                <button className="logout-btn pull-right" onClick={this.onSignOutClick}>
-                   <i className="icon google"></i>
                    Sign Out
+                   <i className="fab fa-google"></i>
                 </button>
            )
        } else {
            return (
-                <button className="login-btn pull-right" onClick={this.onSignInClick}>
-                    <i className="icon google"></i>
-                    Sign In With Google
+                <button className="login-btn pull-right" onClick={this.onSignInClick}>                    
+                    Sign In With Google 
+                    <i className="fab fa-google"></i>
                 </button>
            )
        }

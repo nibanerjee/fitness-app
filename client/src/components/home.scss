@@ -30,6 +30,10 @@ $orange: #F57D3F;
 			    outline:0;
 			    color : #FFF;
 			    margin-bottom: 10px;
+			    border: 1px solid $orange;
+			    &:focus {
+			    	border: 1px solid #fff;
+			    }
 			    i {
 			    	margin-left: 5px;
 			    }

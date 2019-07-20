@@ -28,7 +28,7 @@ class UserForum extends React.Component {
     }
 
     postCommentHandler = () => {
-        if(this.state.userComment != ""){
+        if(this.state.userComment) {
             const enteredComments = this.state.userComment;
             let commentsCharArray = enteredComments.split(" ");
             commentsCharArray = commentsCharArray.filter(comment => comment.indexOf('@') > -1);
@@ -51,7 +51,7 @@ class UserForum extends React.Component {
                                 <div className="title">Post a Challenge</div>
                                 <textarea rows="6" placeholder="Post a comment or enter a youtube video URL" value={this.state.userComment} onChange={(e) => this.onUserCommentChange(e)}>
                                 </textarea>
-                                <button onClick={this.postCommentHandler} className="post-btn pull-right">POST</button>
+                                <button type="button" onClick={this.postCommentHandler} className="post-btn pull-right">POST</button>
                                 </div>
                         </div>
                         <ul className="user-comments-wrapper col-sm-6">
