@@ -1,5 +1,12 @@
 {
   "users": [
+    {
+      "bmi": 21.551020408163264,
+      "userId": "102605792633118497929",
+      "gender": "male",
+      "goal": "gain",
+      "id": 1
+    }
   ],
   "workouts": {
     "male": {
@@ -263,6 +270,18 @@
       "targetId": "109619594323771471060",
       "content": "@109619594323771471060  please watch this  https://www.youtube.com/watch?v=3P6bEAlW-Vw",
       "id": 7
+    },
+    {
+      "sourceId": "102605792633118497929",
+      "targetId": "102605792633118497929",
+      "content": "We completed the workout app hurray",
+      "id": 8
+    },
+    {
+      "sourceId": "102605792633118497929",
+      "targetId": "102605792633118497929",
+      "content": "again enjoying workout",
+      "id": 9
     }
   ],
   "events": [
