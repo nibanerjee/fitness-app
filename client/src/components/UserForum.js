@@ -28,12 +28,14 @@ class UserForum extends React.Component {
     }
 
     postCommentHandler = () => {
-        const enteredComments = this.state.userComment;
-        let commentsCharArray = enteredComments.split(" ");
-        commentsCharArray = commentsCharArray.filter(comment => comment.indexOf('@') > -1);
-        const sourceId = this.props.userId;
-        const targetId = (commentsCharArray.length) ? commentsCharArray[0].substring(1, commentsCharArray[0].length) : sourceId;
-        this.props.CreateUserPosts(targetId,enteredComments);
+        if(this.state.userComment != ""){
+            const enteredComments = this.state.userComment;
+            let commentsCharArray = enteredComments.split(" ");
+            commentsCharArray = commentsCharArray.filter(comment => comment.indexOf('@') > -1);
+            const sourceId = this.props.userId;
+            const targetId = (commentsCharArray.length) ? commentsCharArray[0].substring(1, commentsCharArray[0].length) : sourceId;
+            this.props.CreateUserPosts(targetId,enteredComments);
+        }
     }
     onUserCommentChange = (e) => {
         this.setState({userComment : e.target.value})
@@ -60,7 +62,7 @@ class UserForum extends React.Component {
                                     videoContentArray = videoContentArray.filter(content => content.indexOf('https://www.youtube.com/') > -1);
                                     const videoId = (videoContentArray.length > 0) ? videoContentArray[0].slice(-11) : null;
                                     return (
-                                        <li key={i} className={"user-comment" + (post.sourceId === this.props.userId ? ' self-comment' : '')}>
+                                        <li key={"key"+i} className={"user-comment" + (post.sourceId === this.props.userId ? ' self-comment' : '')}>
                                             <div className="user-img"><i className="fas fa-user-tie"></i></div>
                                             <div className="comment-details">
                                                 {post.content}
